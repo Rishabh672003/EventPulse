@@ -1,0 +1,30 @@
+import React, { useState } from "react";
+import Header from "./components/Header";
+import EventForm from "./components/EventForm";
+import EventList from "./components/EventList";
+
+const App = () => {
+	const [events, setEvents] = useState([]);
+
+	const addEvent = (event) => {
+		setEvents([...events, event]);
+	};
+
+	const deleteEvent = (index) => {
+		setEvents(events.filter((_, i) => i !== index));
+	};
+
+	return (
+		<div className="min-h-screen bg-gray-100">
+			<Header />
+			<div className="container mx-auto py-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<EventForm addEvent={addEvent} />
+					<EventList events={events} deleteEvent={deleteEvent} />
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default App;
