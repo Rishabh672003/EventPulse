@@ -28,7 +28,7 @@ const App = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-100">
+		<div className="min-h-screen bg-gray-100 dark:bg-gray-900">
 			<Header />
 			<div className="container mx-auto py-8">
 				<EventList
