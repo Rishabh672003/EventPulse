@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import EventForm from "./components/EventForm";
 import EventList from "./components/EventList";
 
 const App = () => {
-	const [events, setEvents] = useState([]);
+	const [events, setEvents] = useState(() => {
+		const savedEvents = localStorage.getItem("events");
+		return savedEvents ? JSON.parse(savedEvents) : [];
+	});
+
+	useEffect(() => {
+		localStorage.setItem("events", JSON.stringify(events));
+	}, [events]);
 
 	const addEvent = (event) => {
 		setEvents([...events, event]);
@@ -29,7 +36,7 @@ const App = () => {
 					updateEvent={updateEvent}
 					deleteEvent={deleteEvent}
 				/>
-				<div className="mt-8">
+				<div className="mt-8 flex justify-center">
 					<EventForm addEvent={addEvent} />
 				</div>
 			</div>
