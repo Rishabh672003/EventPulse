@@ -3,12 +3,24 @@ import { differenceInSeconds } from "date-fns";
 
 const EventTimer = ({ event }) => {
 	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(event.date));
+	const [hasEnded, setHasEnded] = useState(false);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
-			setTimeLeft(calculateTimeLeft(event.date));
+			const newTimeLeft = calculateTimeLeft(event.date);
+			setTimeLeft(newTimeLeft);
+			if (newTimeLeft === null && !hasEnded) {
+				alert(`Event: ${event.name} has ended`);
+				setHasEnded(true);
+			}
 		}, 1000);
 		return () => clearInterval(timer);
+	}, [event.date, hasEnded, event.name]);
+
+	useEffect(() => {
+		if (calculateTimeLeft(event.date) !== null) {
+			setHasEnded(false);
+		}
 	}, [event.date]);
 
 	function calculateTimeLeft(targetDate) {
@@ -23,17 +35,21 @@ const EventTimer = ({ event }) => {
 		return { days, hours, minutes, seconds };
 	}
 
-	if (!timeLeft) return <div>Event has passed</div>;
-
 	return (
 		<div className="text-center">
 			<h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
 				{event.name}
 			</h2>
-			<p className="text-xl text-gray-700 dark:text-gray-300">
-				{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
-				{timeLeft.seconds}s
-			</p>
+			{timeLeft ? (
+				<p className="text-xl text-gray-700 dark:text-gray-300">
+					{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+					{timeLeft.seconds}s
+				</p>
+			) : (
+				<p className="text-xl text-gray-700 dark:text-gray-300">
+					Event has passed
+				</p>
+			)}
 		</div>
 	);
 };
