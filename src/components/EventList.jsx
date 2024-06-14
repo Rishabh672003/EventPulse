@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import EventTimer from "./EventTimer";
-import EventForm from "./EventForm";
 
 const EventList = ({ events, updateEvent, deleteEvent }) => {
 	const [editingIndex, setEditingIndex] = useState(null);
 
 	return (
-		<div className="flex flex-wrap justify-center space-x-4">
+		<div className="flex flex-wrap justify-center space-x-4 mb-8">
 			{events.map((event, index) => (
-				<div key={index} className="p-4 border rounded shadow-md">
+				<div key={index} className="p-4 border rounded shadow-md w-64">
 					{editingIndex === index ? (
 						<EditEventForm
 							event={event}
@@ -19,7 +18,7 @@ const EventList = ({ events, updateEvent, deleteEvent }) => {
 					) : (
 						<>
 							<EventTimer event={event} />
-							<div className="mt-4 space-x-2">
+							<div className="mt-4 flex justify-center space-x-2">
 								<button
 									onClick={() => setEditingIndex(index)}
 									className="p-2 bg-yellow-500 text-white rounded"

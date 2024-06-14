@@ -24,13 +24,13 @@ const App = () => {
 		<div className="min-h-screen bg-gray-100">
 			<Header />
 			<div className="container mx-auto py-8">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<EventList
+					events={events}
+					updateEvent={updateEvent}
+					deleteEvent={deleteEvent}
+				/>
+				<div className="mt-8">
 					<EventForm addEvent={addEvent} />
-					<EventList
-						events={events}
-						updateEvent={updateEvent}
-						deleteEvent={deleteEvent}
-					/>
 				</div>
 			</div>
 		</div>

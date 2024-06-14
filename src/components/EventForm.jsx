@@ -12,7 +12,7 @@ const EventForm = ({ addEvent }) => {
 	};
 
 	return (
-		<div className="p-4 border rounded shadow-md">
+		<div className="p-4 border rounded shadow-md w-1/3 mx-auto">
 			<h2 className="text-2xl font-bold mb-4">Add Event</h2>
 			<form onSubmit={handleSubmit} className="space-y-4">
 				<input
