@@ -10,6 +10,12 @@ const App = () => {
 		setEvents([...events, event]);
 	};
 
+	const updateEvent = (index, updatedEvent) => {
+		const newEvents = [...events];
+		newEvents[index] = updatedEvent;
+		setEvents(newEvents);
+	};
+
 	const deleteEvent = (index) => {
 		setEvents(events.filter((_, i) => i !== index));
 	};
@@ -20,7 +26,11 @@ const App = () => {
 			<div className="container mx-auto py-8">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 					<EventForm addEvent={addEvent} />
-					<EventList events={events} deleteEvent={deleteEvent} />
+					<EventList
+						events={events}
+						updateEvent={updateEvent}
+						deleteEvent={deleteEvent}
+					/>
 				</div>
 			</div>
 		</div>
