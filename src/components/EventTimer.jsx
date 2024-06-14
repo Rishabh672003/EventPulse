@@ -27,9 +27,9 @@ const EventTimer = ({ event }) => {
 
 	return (
 		<div className="text-center">
-			<h2 className="text-xl font-bold">{event.name}</h2>
-			<p>
-				{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+			<h2 className="text-2xl font-bold">{event.name}</h2>
+			<p className="text-xl">
+				{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {" "}
 				{timeLeft.seconds}s
 			</p>
 		</div>
