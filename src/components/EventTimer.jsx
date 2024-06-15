@@ -10,7 +10,7 @@ const EventTimer = ({ event }) => {
 			const newTimeLeft = calculateTimeLeft(event.date);
 			setTimeLeft(newTimeLeft);
 			if (newTimeLeft === null && !hasEnded) {
-				alert(`Event: ${event.name} has ended`);
+				alert(`${event.name} ended`);
 				setHasEnded(true);
 			}
 		}, 1000);
@@ -40,6 +40,9 @@ const EventTimer = ({ event }) => {
 			<h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
 				{event.name}
 			</h2>
+			<p className="text-lg text-gray-600 dark:text-gray-400">
+				{event.description}
+			</p>
 			{timeLeft ? (
 				<p className="text-xl text-gray-700 dark:text-gray-300">
 					{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}

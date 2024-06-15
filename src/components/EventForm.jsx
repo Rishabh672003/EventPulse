@@ -1,22 +1,21 @@
-// src/components/EventForm.js
 import React, { useState } from "react";
 
 const EventForm = ({ addEvent }) => {
 	const [name, setName] = useState("");
 	const [date, setDate] = useState("");
+	const [description, setDescription] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addEvent({ name, date });
+		addEvent({ name, date, description });
 		setName("");
 		setDate("");
+		setDescription("");
 	};
 
 	return (
-		<div className="p-4 border rounded shadow-md w-1/3 mx-auto bg-white dark:bg-gray-800">
-			<h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-				Add Event
-			</h2>
+		<div className="p-4 border rounded shadow-md w-1/3 mx-auto">
+			<h2 className="text-2xl font-bold mb-4">Add Event</h2>
 			<form onSubmit={handleSubmit} className="space-y-4">
 				<input
 					type="text"
@@ -24,18 +23,25 @@ const EventForm = ({ addEvent }) => {
 					onChange={(e) => setName(e.target.value)}
 					placeholder="Event Name"
 					required
-					className="w-full p-2 border rounded bg-gray-100 dark:bg-gray-700 dark:text-white"
+					className="w-full p-2 border rounded"
+				/>
+
+				<textarea
+					value={description}
+					onChange={(e) => setDescription(e.target.value)}
+					placeholder="Event Description"
+					className="w-full p-2 border rounded"
 				/>
 				<input
 					type="datetime-local"
 					value={date}
 					onChange={(e) => setDate(e.target.value)}
 					required
-					className="w-full p-2 border rounded bg-gray-100 dark:bg-gray-700 dark:text-white"
+					className="w-full p-2 border rounded"
 				/>
 				<button
 					type="submit"
-					className="w-full p-2 bg-blue-500 dark:bg-blue-700 text-white rounded"
+					className="w-full p-2 bg-blue-500 text-white rounded"
 				>
 					Add Event
 				</button>
