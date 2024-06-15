@@ -14,8 +14,10 @@ const EventForm = ({ addEvent }) => {
 	};
 
 	return (
-		<div className="p-4 border rounded shadow-md w-1/3 mx-auto">
-			<h2 className="text-2xl font-bold mb-4">Add Event</h2>
+		<div className="p-4 border rounded shadow-md w-1/3 mx-auto bg-white dark:bg-gray-800">
+			<h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+				Add Event
+			</h2>
 			<form onSubmit={handleSubmit} className="space-y-4">
 				<input
 					type="text"
@@ -23,21 +25,20 @@ const EventForm = ({ addEvent }) => {
 					onChange={(e) => setName(e.target.value)}
 					placeholder="Event Name"
 					required
-					className="w-full p-2 border rounded"
+					className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:text-white"
 				/>
-
 				<textarea
 					value={description}
 					onChange={(e) => setDescription(e.target.value)}
 					placeholder="Event Description"
-					className="w-full p-2 border rounded"
+					className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:text-white"
 				/>
 				<input
 					type="datetime-local"
 					value={date}
 					onChange={(e) => setDate(e.target.value)}
 					required
-					className="w-full p-2 border rounded"
+					className="w-full p-2 border rounded bg-white dark:bg-gray-700 dark:text-white"
 				/>
 				<button
 					type="submit"
